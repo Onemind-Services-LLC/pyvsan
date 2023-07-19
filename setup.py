@@ -28,10 +28,6 @@ setup(
         'Documentation': 'https://code.vmware.com/apis/1188/vsan',
         'Download': 'https://developer.vmware.com/web/sdk/7.0%20U3/vsan-python',
     },
-    scripts=[
-        'src/vsanapisamples',
-        'src/vsaniscsisamples',
-    ],
     install_requires=[
         'pyvmomi >= 7.0.3',
     ]

@@ -1,0 +1,406 @@
+<html xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vim2="urn:vim2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="./commonRes.js" language="JavaScript"></script>
+<link href="doc-style.css" type="text/css" rel="StyleSheet">
+</head>
+<script src="dynamic-content.js" type="text/javascript"></script>
+<body>
+<table cellspacing="0" class="header-footer" id="top">
+<tr>
+<td>
+<br>
+</td><td></td><td></td><td><a href="#method_detail">Local Methods</a></td>
+</tr>
+<tr>
+<td><a href="index-mo_types.html">Managed Object Types</a></td><td><a href="index-do_types.html">Data Object Types</a></td><td><a href="index-properties.html">All Properties</a></td><td><a href="index-methods.html">All Methods</a></td>
+</tr>
+</table>
+<br>
+<a id="vim.cluster.VsanClusterPowerSystem" name="vim.cluster.VsanClusterPowerSystem"></a>
+<h1>Managed Object -  
+						VsanClusterPowerSystem(vim.cluster.VsanClusterPowerSystem)</h1>
+<dl>
+<dt>See also</dt>
+<dd>
+<a href="vim.cluster.ClusterPowerContext.html">ClusterPowerContext</a>, <a href="vim.ComputeResource.html">ComputeResource</a>, <a href="vim.cluster.PerformClusterPowerActionSpec.html">PerformClusterPowerActionSpec</a>, <a href="vim.Task.html">Task</a>
+</dd>
+<dt>Since </dt>
+<dd>vSAN API vSAN 7.0U3</dd>
+<p></p>
+</dl>
+<br>
+<h2>Managed Object Description</h2>
+<p></p>
+         This managed object type provides the service interface for vsan cluster
+    power action. i.e. power off a whole cluster, query current cluster power
+    context, power on the cluster, etc. The vSAN cluster power system will be
+    supported in both of VC and ESXi host.
+ 
+    When the ManagedEntity is accessed with MOID of 'vsan-cluster-power-system'
+    through vSAN service at vCenter server, it acts as cluster-level APIs.
+ 
+    When it accessed with MOID of 'ha-vsan-power-system' through vSAN service
+    at ESXi host side, its scope is only limited to that host.
+      <a id="field_detail" name="field_detail"></a>
+<p class="table-title">Properties</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Name
+	        </th><th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr class="r0">
+<td colspan="3">None</td>
+</tr>
+</table>
+<br>
+<a id="method_detail" name="method_detail"></a>
+<p class="table-title">Methods</p>
+<table cellspacing="0">
+<tr class="r1">
+<th>
+				          Methods defined in this Managed Object
+				        </th>
+</tr>
+<tr class="r0">
+<td><a href="#performClusterPowerAction">PerformClusterPowerAction</a>, <a href="#queryClusterPowerContext">QueryClusterPowerContext</a>, <a href="#updateClusterPowerStatus">UpdateClusterPowerStatus</a></td>
+</tr>
+</table>
+<br>
+<a id="performClusterPowerAction" name="performClusterPowerAction"></a>
+<h1>PerformClusterPowerAction(performClusterPowerAction)</h1>
+<p></p>
+         Execute cluster power off or power on action.
+    When it's called from VC, it will acts as cluster level API to perform the
+    cluster power action.
+    When it's called from host, if it's an orchestration host, it will act the
+    similar role of VC to orchestrate the cluster power worflow. Otherwise, it
+    will execute specific host power actions such as power off according to spec
+      <dl>
+<dt>Required Privileges</dt>
+<dd>Host.Config.Power Host.Inventory.EditCluster</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanClusterPowerSystem.html">VsanClusterPowerSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster where to take power action.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>spec</strong><span title="Required Privilege: spec" class="privilege-ref"> P</span></td><td><a href="vim.cluster.PerformClusterPowerActionSpec.html">PerformClusterPowerActionSpec</a></td><td>
+<p></p>
+         Indicate the detailed power action specification.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.Task.html">Task</a></td><td>A task object tracking the power action. In case there is something wrong, the task would contain the detailed error message and the error steps.</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.fault.InvalidArgument.html">InvalidArgument</a></td><td>Exception for invalid input arguments, for example, power off the cluster without powerOffReason.</td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+<tr class="r1">
+<td><a href="vim.fault.VsanFault.html">VsanFault</a></td><td>Exception for generic vSAN related errors, for example, some hosts are disconnected when starting to power off.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('PerformClusterPowerAction-textarea');expandcontent(this, 'PerformClusterPowerAction-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="PerformClusterPowerAction-div">
+<textarea cols="20" rows="10" name="PerformClusterPowerAction-textarea" wrap="off" readonly="1" id="PerformClusterPowerAction-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="PerformClusterPowerAction" type="vsan:PerformClusterPowerActionRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="PerformClusterPowerActionResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:ManagedObjectReference"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="queryClusterPowerContext" name="queryClusterPowerContext"></a>
+<h1>QueryClusterPowerContext(queryClusterPowerContext)</h1>
+<p></p>
+         Query the ClusterPowerContext.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>None</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanClusterPowerSystem.html">VsanClusterPowerSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster which to query ClusterPowerContext.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="privilege-ref">P</span><span class="footnote">
+                  Required privilege:
+                  cluster</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vim.cluster.ClusterPowerContext.html">ClusterPowerContext</a></td><td>ClusterPowerContext</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('QueryClusterPowerContext-textarea');expandcontent(this, 'QueryClusterPowerContext-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="QueryClusterPowerContext-div">
+<textarea cols="20" rows="10" name="QueryClusterPowerContext-textarea" wrap="off" readonly="1" id="QueryClusterPowerContext-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryClusterPowerContext" type="vsan:QueryClusterPowerContextRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryClusterPowerContextResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:ClusterPowerContext"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="updateClusterPowerStatus" name="updateClusterPowerStatus"></a>
+<h1>UpdateClusterPowerStatus(updateClusterPowerStatus)</h1>
+<p></p>
+         Update the current cluster power status.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>None</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanClusterPowerSystem.html">VsanClusterPowerSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster which to update the power status.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>status</strong><span title="Required Privilege: status" class="privilege-ref"> P</span></td><td>xsd:string</td><td>
+<p></p>
+         The target status needs to be set.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td>xsd:boolean</td><td>A boolean indicates success or not.</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+<tr class="r0">
+<td><a href="vim.fault.VsanFault.html">VsanFault</a></td><td>Exception for generic vSAN related errors, for example, trying to update the power status when there is a running power action task.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('UpdateClusterPowerStatus-textarea');expandcontent(this, 'UpdateClusterPowerStatus-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="UpdateClusterPowerStatus-div">
+<textarea cols="20" rows="10" name="UpdateClusterPowerStatus-textarea" wrap="off" readonly="1" id="UpdateClusterPowerStatus-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="UpdateClusterPowerStatus" type="vsan:UpdateClusterPowerStatusRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="UpdateClusterPowerStatusResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="xsd:boolean"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<br>
+<table cellspacing="0" class="header-footer" id="bottom">
+<tr>
+<td><a href="#top">Top of page</a></td><td></td><td></td><td><a href="#method_detail">Local Methods</a></td>
+</tr>
+<tr>
+<td><a href="index-mo_types.html">Managed Object Types</a></td><td><a href="index-do_types.html">Data Object Types</a></td><td><a href="index-properties.html">All Properties</a></td><td><a href="index-methods.html">All Methods</a></td>
+</tr>
+</table>
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>

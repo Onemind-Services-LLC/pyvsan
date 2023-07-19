@@ -1,0 +1,785 @@
+<html xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vim2="urn:vim2" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+<script type="text/javascript" src="./commonRes.js" language="JavaScript"></script>
+<link href="doc-style.css" type="text/css" rel="StyleSheet">
+</head>
+<script src="dynamic-content.js" type="text/javascript"></script>
+<body>
+<table cellspacing="0" class="header-footer" id="top">
+<tr>
+<td>
+<br>
+</td><td></td><td></td><td><a href="#method_detail">Local Methods</a></td>
+</tr>
+<tr>
+<td><a href="index-mo_types.html">Managed Object Types</a></td><td><a href="index-do_types.html">Data Object Types</a></td><td><a href="index-properties.html">All Properties</a></td><td><a href="index-methods.html">All Methods</a></td>
+</tr>
+</table>
+<br>
+<a id="vim.cluster.VsanDiagnosticsSystem" name="vim.cluster.VsanDiagnosticsSystem"></a>
+<h1>Managed Object -  
+						VsanDiagnosticsSystem(vim.cluster.VsanDiagnosticsSystem)</h1>
+<dl>
+<dt>See also</dt>
+<dd>
+<a href="vim.ClusterComputeResource.html">ClusterComputeResource</a>, <a href="vim.ComputeResource.html">ComputeResource</a>, <a href="vim.HostSystem.html">HostSystem</a>, <a href="vim.Task.html">Task</a>, <a href="vim.cluster.VsanDiagnosticsThreshold.html">VsanDiagnosticsThreshold</a>, <a href="vim.vsan.IODiagnosticsInstance.html">VsanIODiagnosticsInstance</a>, <a href="vim.vsan.IODiagnosticsInstanceQuerySpec.html">VsanIODiagnosticsInstanceQuerySpec</a>, <a href="vim.vsan.IODiagnosticsTarget.html">VsanIODiagnosticsTarget</a>, <a href="vim.vsan.IODiagnosticsTargetStats.html">VsanIODiagnosticsTargetStats</a>, <a href="vim.cluster.VsanNetworkDiagnostics.html">VsanNetworkDiagnostics</a>
+</dd>
+<dt>Since </dt>
+<dd>vSAN API vSAN 7.0U2</dd>
+<p></p>
+</dl>
+<br>
+<h2>Managed Object Description</h2>
+<p></p>
+         This managed object provides the diagnostics service that operates at cluster
+    level. It runs the periodical diagnostics on the vSAN related statistics, as
+    well as the on-demand diagnostics operation, e.g., the diagnostics of the
+    IOs for a certain virtual machine.
+ 
+    The ManagedEntity can be accessed with MOID of
+    'vsan-cluster-diagnostics-system' through vSAN service at at vCenter side.
+      <a id="field_detail" name="field_detail"></a>
+<p class="table-title">Properties</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Name
+	        </th><th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr class="r0">
+<td colspan="3">None</td>
+</tr>
+</table>
+<br>
+<a id="method_detail" name="method_detail"></a>
+<p class="table-title">Methods</p>
+<table cellspacing="0">
+<tr class="r1">
+<th>
+				          Methods defined in this Managed Object
+				        </th>
+</tr>
+<tr class="r0">
+<td><a href="#queryIODiagnosticsInstances">QueryIODiagnosticsInstances</a>, <a href="#queryIODiagnosticsStats">QueryIODiagnosticsStats</a>, <a href="#startIODiagnosticsTask">StartIODiagnosticsTask</a>, <a href="#getThresholds">VsanGetThresholds</a>, <a href="#queryNetworkDiagnostics">VsanQueryNetworkDiagnostics</a>, <a href="#setThresholds">VsanSetThresholds</a></td>
+</tr>
+</table>
+<br>
+<a id="queryIODiagnosticsInstances" name="queryIODiagnosticsInstances"></a>
+<h1>QueryIODiagnosticsInstances(queryIODiagnosticsInstances)</h1>
+<p></p>
+         Query the completed diagnostics instances by the given query spec.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>None</dd>
+<dt>Since </dt>
+<dd>vSAN API vSAN 7.0U3</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>querySpec</strong><span title="Required Privilege: querySpec" class="privilege-ref"> P</span></td><td><a href="vim.vsan.IODiagnosticsInstanceQuerySpec.html">VsanIODiagnosticsInstanceQuerySpec</a></td><td>
+<p></p>
+         The spec for instance query.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>cluster</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ClusterComputeResource.html">ClusterComputeResource</a></td><td>
+<p></p>
+         The cluster where the diagnostics is performed, ignored when
+                   calling against ESXi hosts.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vim.vsan.IODiagnosticsInstance.html">VsanIODiagnosticsInstance[]</a></td><td>The list of the completed diagnostics instances.</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.fault.InvalidArgument.html">InvalidArgument</a></td><td>Thrown if the query spec is not valid.</td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+<tr class="r1">
+<td><a href="vim.fault.VsanFault.html">VsanFault</a></td><td>Thrown if the caller doesn't have the required privilege or if the vSAN performance service is disabled.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('QueryIODiagnosticsInstances-textarea');expandcontent(this, 'QueryIODiagnosticsInstances-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="QueryIODiagnosticsInstances-div">
+<textarea cols="20" rows="10" name="QueryIODiagnosticsInstances-textarea" wrap="off" readonly="1" id="QueryIODiagnosticsInstances-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryIODiagnosticsInstances" type="vsan:QueryIODiagnosticsInstancesRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryIODiagnosticsInstancesResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:VsanIODiagnosticsInstance" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="queryIODiagnosticsStats" name="queryIODiagnosticsStats"></a>
+<h1>QueryIODiagnosticsStats(queryIODiagnosticsStats)</h1>
+<p></p>
+         Query the IO diagnostics stats according to the given diagnostics instance
+    name.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>None</dd>
+<dt>Since </dt>
+<dd>vSAN API vSAN 7.0U3</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>instanceName</strong><span title="Required Privilege: instanceName" class="privilege-ref"> P</span></td><td>xsd:string</td><td>
+<p></p>
+         The completed diagnostics instance name.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>cluster</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ClusterComputeResource.html">ClusterComputeResource</a></td><td>
+<p></p>
+         The cluster where the diagnostics is performed.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vim.vsan.IODiagnosticsTargetStats.html">VsanIODiagnosticsTargetStats[]</a></td><td>The diagnostics stats.</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.fault.InvalidArgument.html">InvalidArgument</a></td><td>Thrown if the given diagnostics instance name represent a running instance.</td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+<tr class="r1">
+<td><a href="vim.fault.VsanFault.html">VsanFault</a></td><td>Thrown if the caller doesn't have the required privilege or if the vSAN performance service is disabled.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('QueryIODiagnosticsStats-textarea');expandcontent(this, 'QueryIODiagnosticsStats-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="QueryIODiagnosticsStats-div">
+<textarea cols="20" rows="10" name="QueryIODiagnosticsStats-textarea" wrap="off" readonly="1" id="QueryIODiagnosticsStats-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryIODiagnosticsStats" type="vsan:QueryIODiagnosticsStatsRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="QueryIODiagnosticsStatsResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:VsanIODiagnosticsTargetStats" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="startIODiagnosticsTask" name="startIODiagnosticsTask"></a>
+<h1>StartIODiagnosticsTask(startIODiagnosticsTask)</h1>
+<p></p>
+         Start IO diagnostics task against the given targets running on vSAN datastore.
+ 
+    It's not supported to run multiple diagnostics tasks at the same time. You
+    need either cancel the running task or wait until it completes before
+    starting a new diagnostics task.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>None</dd>
+<dt>Since </dt>
+<dd>vSAN API vSAN 7.0U3</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>targets</strong><span title="Required Privilege: targets" class="privilege-ref"> P</span></td><td><a href="vim.vsan.IODiagnosticsTarget.html">VsanIODiagnosticsTarget[]</a></td><td>
+<p></p>
+         The targets to run the diagnostics.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>cluster</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ClusterComputeResource.html">ClusterComputeResource</a></td><td>
+<p></p>
+         The cluster where the targets belong to, ignored when calling
+                   against ESXi hosts.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>duration</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: duration" class="privilege-ref"> P</span></td><td>xsd:long</td><td>
+<p></p>
+         The duration time in seconds to run diagnostics. The valid range
+                    is [300, 3600], default is 300.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U3<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.Task.html">Task</a></td><td>The task that runs the diagnostics.</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.fault.InvalidArgument.html">InvalidArgument</a></td><td>Thrown if the targets are not valid.</td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.fault.NotSupported.html">NotSupported</a></td><td>Thrown if there's already a running diagnostics task.</td>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+<tr class="r0">
+<td><a href="vim.fault.VsanFault.html">VsanFault</a></td><td>Thrown if the caller doesn't have the required privilege or if the pre-check tests failed.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('StartIODiagnosticsTask-textarea');expandcontent(this, 'StartIODiagnosticsTask-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="StartIODiagnosticsTask-div">
+<textarea cols="20" rows="10" name="StartIODiagnosticsTask-textarea" wrap="off" readonly="1" id="StartIODiagnosticsTask-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="StartIODiagnosticsTask" type="vsan:StartIODiagnosticsTaskRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="StartIODiagnosticsTaskResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:ManagedObjectReference"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="getThresholds" name="getThresholds"></a>
+<h1>VsanGetThresholds(getThresholds)</h1>
+<p></p>
+         Get the threshold.
+ 
+    If "entityType" is not set, all threshold settings will be returned;
+ 
+    If "entityType" is set but "metric" is not set, threshold settings for the
+    specified "entityType" will be returned; If threshold settings doesn't exist
+    for "entityType", empty result ([]) will be returned;
+ 
+    If both "entityType" and "metric" are set, threshold settings for the
+    specified "entityType" and "metric" will be returned; If threshold settings
+    doesn't exist for either "entityType" or "metric", empty result ([]) will be
+    returned.
+ 
+    If "metric" is set but "entityType" is not set, "metric" will be ignored and
+    all threshold settings will be returned.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>System.Read</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster where the threshold is to get from
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>entityType</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: entityType" class="privilege-ref"> P</span></td><td>xsd:string</td><td>
+<p></p>
+         Get threshold only for the specified entity type.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>metric</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: metric" class="privilege-ref"> P</span></td><td>xsd:string</td><td>
+<p></p>
+         Get threshold only for the specified metric, "entityType" must
+                  also be set if "metric" is set.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vim.cluster.VsanDiagnosticsThreshold.html">VsanDiagnosticsThreshold[]</a></td><td>vim.cluster.VsanDiagnosticsThreshold[]</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vim.fault.NotFound.html">NotFound</a></td><td></td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('VsanGetThresholds-textarea');expandcontent(this, 'VsanGetThresholds-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="VsanGetThresholds-div">
+<textarea cols="20" rows="10" name="VsanGetThresholds-textarea" wrap="off" readonly="1" id="VsanGetThresholds-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanGetThresholds" type="vsan:VsanGetThresholdsRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanGetThresholdsResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:VsanDiagnosticsThreshold" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="queryNetworkDiagnostics" name="queryNetworkDiagnostics"></a>
+<h1>VsanQueryNetworkDiagnostics(queryNetworkDiagnostics)</h1>
+<p></p>
+         Get the latest network events that triggered network alarms.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>System.Read</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster where the network diagnostics is performed.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>host</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: host" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.HostSystem.html">HostSystem</a></td><td>
+<p></p>
+         Get only for the specified host.
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td><a href="vim.cluster.VsanNetworkDiagnostics.html">VsanNetworkDiagnostics[]</a></td><td>vim.cluster.VsanNetworkDiagnostics[]</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vim.fault.NotFound.html">NotFound</a></td><td></td>
+</tr>
+<tr class="r0">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('VsanQueryNetworkDiagnostics-textarea');expandcontent(this, 'VsanQueryNetworkDiagnostics-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="VsanQueryNetworkDiagnostics-div">
+<textarea cols="20" rows="10" name="VsanQueryNetworkDiagnostics-textarea" wrap="off" readonly="1" id="VsanQueryNetworkDiagnostics-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanQueryNetworkDiagnostics" type="vsan:VsanQueryNetworkDiagnosticsRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanQueryNetworkDiagnosticsResponse">
+                  <complexType>
+                     <sequence>
+                        <element name="returnval" type="vsan:VsanNetworkDiagnostics" minOccurs="0" maxOccurs="unbounded"/>
+                     </sequence>
+                  </complexType>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<a id="setThresholds" name="setThresholds"></a>
+<h1>VsanSetThresholds(setThresholds)</h1>
+<p></p>
+         Set the threshold.
+ 
+    The "entityType" and "metric" of the new threshold must be in current
+    supported list (see <a href="vim.cluster.VsanDiagnosticsThreshold.html#entityType">entityType</a>),
+    or fault "vmodl.fault.InvalidArgument" will be raised.
+ 
+    If "yellow" or "red" value is "0" or not set in the new threshold, the
+    existing "yellow" or "red" value of current threshold setting will keep
+    unchanged.
+      <dl>
+<dt>Required Privileges</dt>
+<dd>Global.Diagnostics</dd>
+</dl>
+<p class="table-title">
+		Parameters
+		</p>
+<table cellspacing="0">
+<tr>
+<th>Name</th><th>Type</th><th>Description</th>
+</tr>
+<tr class="r1">
+<td><strong>_this</strong></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a></td><td>
+					A reference to the 
+						<a href="vim.cluster.VsanDiagnosticsSystem.html">VsanDiagnosticsSystem</a>
+						used to make the method call.
+					</td>
+</tr>
+<tr class="r0">
+<td nowrap="1"><strong>cluster</strong><span title="Required Privilege: cluster" class="privilege-ref"> P</span></td><td><a href="vmodl.ManagedObjectReference.html">ManagedObjectReference</a>
+<br> to a
+                  <a href="vim.ComputeResource.html">ComputeResource</a></td><td>
+<p></p>
+         The cluster where the threshold is to set to
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+<tr class="r1">
+<td nowrap="1"><strong>thresholds</strong><span title="Need not be set" class="footnote-ref">*</span><span title="Required Privilege: thresholds" class="privilege-ref"> P</span></td><td><a href="vim.cluster.VsanDiagnosticsThreshold.html">VsanDiagnosticsThreshold[]</a></td><td>
+<p></p>
+         The new threshold value to set
+      <p></p>
+<B><I>Since </I></B>vSAN API vSAN 7.0U2<br>
+</td>
+</tr>
+</table>
+<span class="footnote-ref">*</span><span class="footnote">Need not be set </span><span class="privilege-ref">P</span><span class="footnote">Required privilege - see tooltip for details</span>
+<br>
+<p class="table-title">
+		Return Value
+		</p>
+<table cellspacing="0">
+<tr>
+<th>
+	          Type
+	        </th><th>
+	          Description
+	        </th>
+</tr>
+<tr>
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<p class="table-title">
+         Faults
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th><th>
+               Description
+            </th>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.fault.InvalidArgument.html">InvalidArgument</a></td><td></td>
+</tr>
+<tr class="r0">
+<td><a href="vim.fault.NotFound.html">NotFound</a></td><td></td>
+</tr>
+<tr class="r1">
+<td><a href="vmodl.RuntimeFault.html">RuntimeFault</a></td><td>Thrown if any type of runtime fault is thrown that is not covered by the other faults; for example, a communication error.</td>
+</tr>
+</table>
+<p class="table-title">
+         Events
+      </p>
+<table cellspacing="0">
+<tr>
+<th>
+               Type
+            </th>
+</tr>
+<tr class="r1">
+<td colspan="2">None</td>
+</tr>
+</table>
+<br>
+<a style="margin-bottom:10px; margin-top:10px; cursor:hand; cursor:pointer" onclick="resize_textarea('VsanSetThresholds-textarea');expandcontent(this, 'VsanSetThresholds-div')">Show WSDL type definition</a>
+<div class="switchcontent" id="VsanSetThresholds-div">
+<textarea cols="20" rows="10" name="VsanSetThresholds-textarea" wrap="off" readonly="1" id="VsanSetThresholds-textarea">         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanSetThresholds" type="vsan:VsanSetThresholdsRequestType"/>
+         <element xmlns="http://www.w3.org/2001/XMLSchema" xmlns:vsan="urn:vsan" name="VsanSetThresholdsResponse">
+                  <complexType/>
+               </element></textarea>
+</div>
+<br>
+<br>
+<br>
+<br>
+<table cellspacing="0" class="header-footer" id="bottom">
+<tr>
+<td><a href="#top">Top of page</a></td><td></td><td></td><td><a href="#method_detail">Local Methods</a></td>
+</tr>
+<tr>
+<td><a href="index-mo_types.html">Managed Object Types</a></td><td><a href="index-do_types.html">Data Object Types</a></td><td><a href="index-properties.html">All Properties</a></td><td><a href="index-methods.html">All Methods</a></td>
+</tr>
+</table>
+<br>
+<script language="javascript">document.write(ID_Copyright);</script>
+<br>
+<script language="javascript">document.write(ID_VersionInformation);</script>
+</body>
+</html>
